@@ -80,6 +80,7 @@ function SignUpForm() {
                     Submit
                 </Button>
             </form>
+            <a href="url">Already a user?</a>
         </div>
     );
 }
