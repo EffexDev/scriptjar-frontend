@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import "tailwindcss";
+
+* {
+    margin: 0px;
+}
+
+/* div {
+    border: 1px solid red;
+} */
+
+#title {
+    font-family: "Nunito";
+    color: rgb(20, 133, 185);
+    font-weight: bolder;
+}
+
+#body-copy {
+    font-family: "Mulish", sans-serif;}
