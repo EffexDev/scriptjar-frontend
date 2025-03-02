@@ -3,28 +3,29 @@ import { Button } from "@mui/material";
 import { Send } from "@mui/icons-material";
 
 function SignUpForm() {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [confirm, setConfirm] = useState("");
-    const [match, setMatch] = useState(true);  // Initially assuming passwords match
+    const [passwordCheck, setPasswordCheck] = useState("");
+    const [match, setMatch] = useState(true);  
 
-    // Handle changes in the Confirm Password field and check if they match
     const handleConfirmChange = (e) => {
-        setConfirm(e.target.value);  // Update confirm password value
+        const confirmPassword = e.target.value;
+        setPasswordCheck(confirmPassword);
 
-        // Directly check if password and confirm match
-        if (password !== confirm) {
-            setMatch(false);  // Set match to false if passwords don't match
+        if (password !== confirmPassword) {
+            setMatch(false);  
         } else {
-            setMatch(true);  // Set match to true if passwords match
+            setMatch(true); 
         }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (match) {
-            console.log(email, password);
-            // Handle form submission logic here
+
+        if (username === "" ||password === "" || passwordCheck === "" || !match) {
+            return;
+        } else {
+            console.log('success');
         }
     };
 
@@ -33,13 +34,13 @@ function SignUpForm() {
             <form onSubmit={handleSubmit} className="w-full">
                 <div className="w-full pb-2">
                     <label className="block text-gray-400 text-sm font-medium">
-                        <span className="text-red-700">*</span> Email
+                        <span className="text-red-700">*</span> Username
                     </label>
                     <input
                         type="text"
-                        placeholder="john.doe@team.aussiebroadband.com.au"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder=""
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                         className="w-full mt-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                 </div>
@@ -62,21 +63,19 @@ function SignUpForm() {
                     <input
                         type="password"
                         placeholder="********"
-                        value={confirm}
-                        onChange={handleConfirmChange}  // Call the updated function on change
+                        value={passwordCheck}  
+                        onChange={handleConfirmChange} 
                         className="w-full mt-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
-                    {/* Show error if passwords do not match */}
                     {!match && (
                         <p className="text-red-600">Passwords do not match!</p>
                     )}
                 </div>
                 <Button
                     type="submit"
-                    variant={match ? "contained" : "outlined"}  // Conditionally set variant
+                    variant={username !== "" && password !== "" && passwordCheck !== "" && match ? "contained" : "disabled"} 
                     sx={{ width: "100%", marginTop: "10px" }}
                     endIcon={<Send />}
-                    disabled={!match}  // Disable button if passwords don't match
                 >
                     Submit
                 </Button>
