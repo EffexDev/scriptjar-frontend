@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, setPersistence, browserSessionPersistence } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -12,5 +12,13 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+
+setPersistence(auth, browserSessionPersistence)
+  .then(() => {
+    console.log("Session persistence set: User will be logged out on browser close.");
+  })
+  .catch((error) => {
+    console.error("Error setting persistence:", error);
+  });
 
 export { auth };

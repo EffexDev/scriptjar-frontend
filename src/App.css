@@ -13,9 +13,10 @@
 
 body {
     background: radial-gradient(at 10% 30%, #150020, #1a0028, #10001a, #080011);
+    background-size: cover; /* Ensures the gradient covers the entire viewport */
+    background-repeat: no-repeat; /* Prevents repeating */
     font-family: "Sarabun", sans-serif;
-  }
-
+}
 h1 {
     font-family: "Bree Serif", serif;
 }

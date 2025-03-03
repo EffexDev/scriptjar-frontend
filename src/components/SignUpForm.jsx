@@ -31,7 +31,7 @@ function SignUpFormContent() {
     const auth = getAuth(); 
     try {
       await createUserWithEmailAndPassword(auth, username, password);
-      console.log("Sign up success");
+      alert("Sign up success");
     } catch (error) {
       setErrorMessage(error.message); 
     }
