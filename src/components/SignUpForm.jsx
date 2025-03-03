@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
 import { Send } from "@mui/icons-material";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 function SignUpFormContent() {
   const [username, setUsername] = useState("");
@@ -19,13 +21,19 @@ function SignUpFormContent() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (username === "" || password === "" || passwordCheck === "" || !match) {
       return;
-    } else {
+    }
+
+    const auth = getAuth(); 
+    try {
+      await createUserWithEmailAndPassword(auth, username, password);
       console.log("Sign up success");
+    } catch (error) {
+      setErrorMessage(error.message); 
     }
   };
 
