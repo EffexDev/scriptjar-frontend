@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
 import { Send } from "@mui/icons-material";
-
+ 
 function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,11 +17,11 @@ function LoginForm() {
     <form onSubmit={handleSubmit} className="sm:w-2xl pb-3">
       <div className="w-full pb-2">
         <label className="block text-gray-400 text-sm font-medium">
-          <span className="text-red-700">*</span> Username
+          <span className="text-red-700">*</span> Email
         </label>
         <input
           type="text"
-          placeholder=""
+          placeholder="john.doe@gmail.com"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           className="w-full mt-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
