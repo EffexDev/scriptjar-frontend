@@ -1,8 +1,8 @@
 function Header() {
     return (
         <>
-            <h1 id="title" className="text-6xl text-center pb-10 pl-10 whitespace-nowrap">
-                ScriptJar 🫙
+            <h1 id="title" className="text-5xl text-center pb-10 sm:pl-10 ">
+                ScriptJar <span className="hidden sm:inline">🫙</span>
             </h1>
         </>
     )
