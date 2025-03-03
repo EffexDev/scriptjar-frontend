@@ -9,7 +9,7 @@ function SignUpForm() {
   return (
     <>
       <div 
-        className={`backdrop-blur-2xl bg-white/3 py-20 pr-4 pl-7 md:pr-10 xl:pl-100 rounded-r-4xl max-w-6xl transition-transform duration-500 ${
+        className={`backdrop-blur-5xl bg-white/3 py-5 pr-4 pl-7 md:pr-10 xl:pl-100 rounded-r-4xl max-w-6xl transition-transform duration-500 ${
           isSignUp ? "transform" : "-translate-x-full"
         }`}
       >
@@ -26,7 +26,7 @@ function SignUpForm() {
       </div>
 
       <div
-        className={`backdrop-blur-2xl bg-white/3 py-20 pr-7 pl-4 md:pl-10 xl:pr-100 rounded-l-4xl max-w-6xl fixed right-0 transform transition-transform duration-500 ${
+        className={`backdrop-blur-2xl bg-white/3 py-10 pr-7 pl-4 md:pl-10 xl:pr-100 rounded-l-4xl max-w-6xl fixed right-0 transform transition-transform duration-500 ${
           !isSignUp ? "translate-x-0" : "translate-x-full"
         }`}
       >

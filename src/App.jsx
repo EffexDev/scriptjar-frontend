@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 function App() {
     return (
         <div>
-            <div className="flex flex-col pt-30 h-screen">
+            <div className="flex flex-col justify-center h-screen">
                 <LoginPanel />
             </div>
             <Footer />
