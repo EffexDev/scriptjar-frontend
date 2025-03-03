@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import { Send } from "@mui/icons-material";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebaseConfig";
+import { auth } from "../config/firebaseConfig";
 
 function SignUpFormContent() {
   const [username, setUsername] = useState("");
@@ -41,11 +41,11 @@ function SignUpFormContent() {
     <form onSubmit={handleSubmit} className="sm:w-2xl pb-3">
       <div className="w-full pb-2">
         <label className="block text-gray-400 text-sm font-medium">
-          <span className="text-red-700">*</span> Username
+          <span className="text-red-700">*</span> Email
         </label>
         <input
           type="text"
-          placeholder=""
+          placeholder="john.doe@gmail.com"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           className="w-full mt-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
