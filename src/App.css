@@ -15,6 +15,12 @@
     color: #C7CEDB;
 }
 
+html, body {
+  overflow: hidden;
+  height: 100%;
+  touch-action: none;
+}
+
 body {
     background: radial-gradient(at 10% 30%, #150020, #1a0028, #10001a, #080011);
     background-size: cover; /* Ensures the gradient covers the entire viewport */
