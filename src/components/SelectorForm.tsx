@@ -7,8 +7,8 @@ function SelectorForm() {
             <FormControl sx={{ m: 1, minWidth: 120}} size="small">
             <InputLabel sx={{color: "white"}} id="demo-select-small-label">Age</InputLabel>
                 <Select
-                    labelId="demo-select-small-label"
-                    id="demo-select-small"
+                    labelId="demo-select-small-label" 
+sx={{color: "white"}} id="demo-select-small"
                     label="Age"
                     
                 >
