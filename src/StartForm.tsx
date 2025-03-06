@@ -37,7 +37,7 @@ function SignUpForm() {
         <LoginForm />
         <div className="text-center">
             <a href="#" onClick={() => setIsSignUp(true)}>
-            Need an Account?
+            Need an account?
             </a>
         </div>
 
