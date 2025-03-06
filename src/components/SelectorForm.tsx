@@ -5,7 +5,7 @@ function SelectorForm() {
     return (
         <div className="rounded-lg bg-gray-100/20 backdrop-blur-6xl p-10 text-white">
             <FormControl sx={{ m: 1, minWidth: 120}} size="small">
-            <InputLabel sx={{color: "white" id="demo-select-small-label">Age</InputLabel>
+            <InputLabel sx={{color: "white"}} id="demo-select-small-label">Age</InputLabel>
                 <Select
                     labelId="demo-select-small-label"
                     id="demo-select-small"
