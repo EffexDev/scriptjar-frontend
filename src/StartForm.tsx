@@ -15,7 +15,7 @@ function SignUpForm() {
       >
         <Header />
         <div className="text-center pb-3">
-            <h1 className="text-2xl pb-3">Sign Up</h1>
+            <h1 className="text-2xl pb-3">sign up</h1>
         </div>
         <SignUpFormContent />
         <div className="text-center">
@@ -32,7 +32,7 @@ function SignUpForm() {
       >
         <Header />
         <div className="text-center pb-3">
-            <h1 className="text-2xl pb-3">Log In</h1>
+            <h1 className="text-2xl pb-3">log in</h1>
         </div>
         <LoginForm />
         <div className="text-center">
