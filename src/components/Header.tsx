@@ -1,7 +1,7 @@
 function Header() {
     return (
         <>
-        <div className="xm:pl-20 text-center whitespace-nowrap">
+        <div className="xm:pl-20 text-4xl text-center whitespace-nowrap">
             <h1 id ="title">script.🫙</h1>
         </div>
         </>
