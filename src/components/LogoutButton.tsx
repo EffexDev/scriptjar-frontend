@@ -17,7 +17,7 @@ function LogoutButton() {
             });
     };
     return (
-        <div className="pr-10">
+        <div>
             <Button variant="contained" color="error" onClick={handleLogout} endIcon={<ExitToAppIcon />}>Log out</Button>
         </div>
     )

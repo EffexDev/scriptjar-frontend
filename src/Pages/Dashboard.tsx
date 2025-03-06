@@ -1,6 +1,7 @@
 import NavBar from "@/components/NavBar";
 import Footer from "../components/Footer";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+import SelectorForm from "@/components/SelectorForm";
 
 function Dashboard() {
     return (
@@ -13,6 +14,7 @@ function Dashboard() {
                     flickerChance={0.1}
             />
             <NavBar />
+            <SelectorForm />
             <Footer />
         </div>
     )

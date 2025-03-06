@@ -3,7 +3,7 @@ import StartForm from "./StartForm";
 
 function LoginPanel() {
     return (
-    <div className="flex flex-row items-center">
+    <div className="flex flex-row">
         <StartForm />
     </div>
     )
