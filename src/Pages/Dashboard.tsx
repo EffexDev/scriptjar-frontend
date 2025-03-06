@@ -13,7 +13,9 @@ function Dashboard() {
                     maxOpacity={0.2}
                     flickerChance={0.1}
             />
+<div className="pb-5">
             <NavBar />
+</div>
             <SelectorForm />
             <Footer />
         </div>
