@@ -5,7 +5,7 @@ import SelectorForm from "@/components/SelectorForm";
 
 function Dashboard() {
     return (
-        <div className="h-dvh z-0">
+        <div className="h-dvh flex flex-col justify-center z-0">
                   <FlickeringGrid className="absolute top-0 left-0 h-full w-full"
                     squareSize={4}
                     gridGap={6}
