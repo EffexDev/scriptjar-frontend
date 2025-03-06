@@ -1,5 +1,3 @@
-import { HyperText } from "./magicui/hyper-text";
-
 function Header() {
     return (
         <>
