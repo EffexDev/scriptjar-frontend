@@ -1,43 +1,72 @@
-import GenerateButton from "./GenerateButton";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import React, { useState } from "react";
+import { Button } from "@mui/material";
 
 function SelectorForm() {
+    const [department, setDepartment] = useState("");
+    const [reason, setReason] = useState("");
+    const [set, setSet] = useState("");
+
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();  // Prevents the default form submission behavior
+        console.log("Form Submitted");
+        console.log({ department, reason, set });  // Logs the current form data
+    };
+
     return (
-        <div className="flex flex-col w-[80vw] rounded-lg bg-gray-100/20 justify-center items-center backdrop-blur-6xl p-10 text-white">
-            <FormControl sx={{ m: 1, minWidth: 120}} size="small">
-            <InputLabel sx={{ color: "white" }} id="demo-select-small-label">
-  Age
-</InputLabel>
-<Select
-  labelId="demo-select-small-label"
-  id="demo-select-small"
-  label="Age"
-  sx={{
-    color: "white", // Text color
-    "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "white", // Changes border color to white
-    },
-    "&:hover .MuiOutlinedInput-notchedOutline": {
-      borderColor: "white", // Keeps border white on hover
-    },
-    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "white", // Keeps border white when focused
-    },
-  }}
->
+        <div className="flex flex-col w-[80vw] rounded-lg bg-gray-100/20 justify-center items-center backdrop-blur-6xl p-10 ">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
+                {/* Department Dropdown */}
+                <div className="w-[100%] mb-4">
+                    <label htmlFor="department" className="block text-white mb-2">Department</label>
+                    <select
+                        id="department"
+                        value={department}
+                        onChange={(e) => setDepartment(e.target.value)}
+                        className="w-full p-2 bg-transparent border border-white text-white rounded-md focus:outline-none focus:border-white"
+                    >
+                        <option value="" className="text-black">None</option>
+                        <option value="10" className="text-black">Ten</option>
+                        <option value="20" className="text-black">Twenty</option>
+                        <option value="30" className="text-black">Thirty</option>
+                    </select>
+                </div>
 
+                {/* Reason Dropdown */}
+                <div className="w-[100%] mb-4">
+                    <label htmlFor="reason" className="block text-white mb-2">Reason</label>
+                    <select
+                        id="reason"
+                        value={reason}
+                        onChange={(e) => setReason(e.target.value)}
+                        className="w-full p-2 bg-transparent border border-white text-white rounded-md focus:outline-none focus:border-white"
+                    >
+                        <option value="" className="text-black">None</option>
+                        <option value="10" className="text-black">Ten</option>
+                        <option value="20" className="text-black">Twenty</option>
+                        <option value="30" className="text-black">Thirty</option>
+                    </select>
+                </div>
 
-                    <MenuItem value="">
-                    <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-            </FormControl>
-            <GenerateButton />
+                {/* Set Dropdown */}
+                <div className="w-[100%] mb-4">
+                    <label htmlFor="set" className="block text-white mb-2">Set</label>
+                    <select
+                        id="set"
+                        value={set}
+                        onChange={(e) => setSet(e.target.value)}
+                        className="w-full p-2 bg-transparent border border-white text-white rounded-md focus:outline-none focus:border-white"
+                    >
+                        <option value="" className="text-black">None</option>
+                        <option value="10" className="text-black">Ten</option>
+                        <option value="20" className="text-black">Twenty</option>
+                        <option value="30" className="text-black">Thirty</option>
+                    </select>
+                </div>
+
+                <Button onClick ={handleSubmit} color="secondary" variant="contained" fullWidth sx={{marginTop: 2}}>Generate</Button>
+                </form>
         </div>
-    )
+    );
 }
 
 export default SelectorForm;
