@@ -3,7 +3,7 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 function SelectorForm() {
     return (
-        <div className="flex flex-col rounded-lg bg-gray-100/20 justify-center items-center backdrop-blur-6xl p-10 text-white">
+        <div className="flex flex-col max-w-[80vw] rounded-lg bg-gray-100/20 justify-center items-center backdrop-blur-6xl p-10 text-white">
             <FormControl sx={{ m: 1, minWidth: 120}} size="small">
             <InputLabel sx={{ color: "white" }} id="demo-select-small-label">
   Age
