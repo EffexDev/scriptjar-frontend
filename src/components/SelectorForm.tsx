@@ -3,14 +3,32 @@ import { Button } from "@mui/material";
 
 function SelectorForm() {
     const [department, setDepartment] = useState("");
-    const [reason, setReason] = useState("");
-    const [set, setSet] = useState("");
+    // const [reason, setReason] = useState("");
+    // const [set, setSet] = useState("");
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();  // Prevents the default form submission behavior
         console.log("Form Submitted");
-        console.log({ department, reason, set });  // Logs the current form data
+        const departmentNumber = Number(department);
+        doubleNumber(departmentNumber);
     };
+
+    async function doubleNumber(number: number) {
+        try {
+            const response = await fetch('https://scriptjar-backend-production.up.railway.app/double', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ number })
+            });
+    
+            const data = await response.json();
+            console.log('Doubled number:', data.result);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
 
     return (
         <div className="flex flex-col w-[80vw] rounded-lg bg-gray-100/20 justify-center items-center backdrop-blur-6xl p-10 ">
@@ -31,7 +49,7 @@ function SelectorForm() {
                     </select>
                 </div>
 
-                {/* Reason Dropdown */}
+                {/* Reason Dropdown
                 <div className="w-[100%] mb-4">
                     <label htmlFor="reason" className="block text-white mb-2">Reason</label>
                     <select
@@ -45,10 +63,10 @@ function SelectorForm() {
                         <option value="20" className="text-black">Twenty</option>
                         <option value="30" className="text-black">Thirty</option>
                     </select>
-                </div>
+                </div> */}
 
                 {/* Set Dropdown */}
-                <div className="w-[100%] mb-4">
+                {/* <div className="w-[100%] mb-4">
                     <label htmlFor="set" className="block text-white mb-2">Set</label>
                     <select
                         id="set"
@@ -61,7 +79,7 @@ function SelectorForm() {
                         <option value="20" className="text-black">Twenty</option>
                         <option value="30" className="text-black">Thirty</option>
                     </select>
-                </div>
+                </div> */}
 
                 <Button onClick ={handleSubmit} color="secondary" variant="contained" fullWidth sx={{marginTop: 2}}>Generate</Button>
                 </form>
