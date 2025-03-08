@@ -1,52 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "@mui/material";
 
 function SelectorForm() {
     const [department, setDepartment] = useState("");
-    const [group, setGroup] = useState("");
-    const [set, setSet] = useState("");
-    const [templates, setTemplates] = useState<any[]>([]); // To store fetched templates
-
-    const [groups, setGroups] = useState<any[]>([]); // To store groups based on selected department
-    const [sets, setSets] = useState<any[]>([]); // To store sets based on selected group
-
-    useEffect(() => {
-        // Fetch groups based on selected department
-        if (department) {
-            fetch(`https://scriptjar-backend-production.up.railway.app/groups?departmentId=${department}`)
-                .then(response => response.json())
-                .then(data => setGroups(data))
-                .catch(error => console.error('Error fetching groups:', error));
-        }
-    }, [department]);
-
-    useEffect(() => {
-        // Fetch sets based on selected group
-        if (group) {
-            fetch(`https://scriptjar-backend-production.up.railway.app/sets?groupId=${group}`)
-                .then(response => response.json())
-                .then(data => setSets(data))
-                .catch(error => console.error('Error fetching sets:', error));
-        }
-    }, [group]);
+    // const [reason, setReason] = useState("");
+    // const [set, setSet] = useState("");
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();  // Prevents the default form submission behavior
         console.log("Form Submitted");
-
-        if (department && group && set) {
-            fetchTemplates(department, group, set);
-        }
+        const departmentNumber = Number(department);
+        doubleNumber(departmentNumber);
     };
 
-    async function fetchTemplates(departmentId: string, groupId: string, setId: string) {
+    async function doubleNumber(number: number) {
         try {
-            const response = await fetch(`https://scriptjar-backend-production.up.railway.app/templates?departmentId=${departmentId}&groupId=${groupId}&setId=${setId}`);
+            const response = await fetch('https://scriptjar-backend-production.up.railway.app/double', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ number })
+            });
+    
             const data = await response.json();
-            setTemplates(data); // Store templates in state
-            console.log(templates)
+            console.log('Doubled number:', data.result);
         } catch (error) {
-            console.error('Error fetching templates:', error);
+            console.error('Error:', error);
         }
     }
 
@@ -63,65 +43,46 @@ function SelectorForm() {
                         className="w-full p-2 bg-transparent border border-white text-white rounded-md focus:outline-none focus:border-white"
                     >
                         <option value="" className="text-black">None</option>
-                        <option value="67cbd98d4d0b94b7ee0bf962" className="text-black">Faults</option>
-                        {/* Add more departments here */}
+                        <option value="10" className="text-black">Ten</option>
+                        <option value="20" className="text-black">Twenty</option>
+                        <option value="30" className="text-black">Thirty</option>
                     </select>
                 </div>
 
-                {/* Group Dropdown */}
+                {/* Reason Dropdown
                 <div className="w-[100%] mb-4">
-                    <label htmlFor="group" className="block text-white mb-2">Group</label>
+                    <label htmlFor="reason" className="block text-white mb-2">Reason</label>
                     <select
-                        id="group"
-                        value={group}
-                        onChange={(e) => setGroup(e.target.value)}
+                        id="reason"
+                        value={reason}
+                        onChange={(e) => setReason(e.target.value)}
                         className="w-full p-2 bg-transparent border border-white text-white rounded-md focus:outline-none focus:border-white"
-                        disabled={!department} // Disable until department is selected
                     >
                         <option value="" className="text-black">None</option>
-                        {groups.map((g: any) => (
-                            <option key={g._id} value={g._id} className="text-black">{g.name}</option>
-                        ))}
+                        <option value="10" className="text-black">Ten</option>
+                        <option value="20" className="text-black">Twenty</option>
+                        <option value="30" className="text-black">Thirty</option>
                     </select>
-                </div>
+                </div> */}
 
                 {/* Set Dropdown */}
-                <div className="w-[100%] mb-4">
+                {/* <div className="w-[100%] mb-4">
                     <label htmlFor="set" className="block text-white mb-2">Set</label>
                     <select
                         id="set"
                         value={set}
                         onChange={(e) => setSet(e.target.value)}
                         className="w-full p-2 bg-transparent border border-white text-white rounded-md focus:outline-none focus:border-white"
-                        disabled={!group} // Disable until group is selected
                     >
                         <option value="" className="text-black">None</option>
-                        {sets.map((s: any) => (
-                            <option key={s._id} value={s._id} className="text-black">{s.name}</option>
-                        ))}
+                        <option value="10" className="text-black">Ten</option>
+                        <option value="20" className="text-black">Twenty</option>
+                        <option value="30" className="text-black">Thirty</option>
                     </select>
-                </div>
+                </div> */}
 
-                <Button type="submit" color="secondary" variant="contained" fullWidth sx={{ marginTop: 2 }}>
-                    Generate
-                </Button>
-            </form>
-
-            {/* Display Templates */}
-            <div className="mt-4">
-                {templates.length > 0 ? (
-                    <ul>
-                        {templates.map((template: any) => (
-                            <li key={template._id}>
-                                <h3>{template.template_name}</h3>
-                                <p>{template.content}</p>
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No templates found</p>
-                )}
-            </div>
+                <Button onClick ={handleSubmit} color="secondary" variant="contained" fullWidth sx={{marginTop: 2}}>Generate</Button>
+                </form>
         </div>
     );
 }
