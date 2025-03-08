@@ -24,7 +24,7 @@ function SelectorForm() {
             });
     
             const data = await response.json();
-            alert('Doubled number:', data.result);
+            alert('Doubled number: ' + data.result);
         } catch (error) {
             console.error('Error:', error);
         }
