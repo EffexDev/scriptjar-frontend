@@ -44,6 +44,7 @@ function SelectorForm() {
             const response = await fetch(`https://scriptjar-backend-production.up.railway.app/templates?departmentId=${departmentId}&groupId=${groupId}&setId=${setId}`);
             const data = await response.json();
             setTemplates(data); // Store templates in state
+            console.log(templates)
         } catch (error) {
             console.error('Error fetching templates:', error);
         }
