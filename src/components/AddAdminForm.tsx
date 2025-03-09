@@ -21,8 +21,13 @@ const AddAdminForm = () => {
 
     try {
       // Call the cloud function to add the custom admin claim
-      const addAdminClaim = httpsCallable(functions, 'addAdminClaim');
-      const result = await addAdminClaim({ email });
+      
+      const addAdminClaim = httpsCallable(functions, 'addAdminClaims');
+      const trimmedEmail = email.trim();
+      console.log("Sending to Firebase:", { email: trimmedEmail });
+      const result = await addAdminClaim({ email: trimmedEmail });
+      console.log("Received from Firebase Function:", result);  // Log the response from Firebase
+
 
       // TypeScript doesn't know the shape of result.data, so we assert it here
       const data = result.data as AdminResult; // Assert the type
