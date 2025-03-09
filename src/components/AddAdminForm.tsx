@@ -1,12 +1,18 @@
 import { getFunctions, httpsCallable } from 'firebase/functions';
 import { useState } from 'react';
 
+// Define the structure of the result returned by the function
+interface AdminResult {
+  message?: string;
+  error?: string;
+}
+
 const AddAdminForm = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -18,12 +24,15 @@ const AddAdminForm = () => {
       const addAdminClaim = httpsCallable(functions, 'addAdminClaim');
       const result = await addAdminClaim({ email });
 
-      if (result.data && result.data.message) {
-        alert(result.data.message);
-      } else if (result.data && result.data.error) {
-        setError('Error: ' + result.data.error);
+      // TypeScript doesn't know the shape of result.data, so we assert it here
+      const data = result.data as AdminResult; // Assert the type
+
+      if (data.message) {
+        alert(data.message);
+      } else if (data.error) {
+        setError('Error: ' + data.error);
       }
-    } catch (err) {
+    } catch (err: any) { // The 'any' type is used for error since it's not always predictable
       setError('Error adding admin: ' + err.message);
     } finally {
       setLoading(false);
