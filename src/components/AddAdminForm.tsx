@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getAuth } from 'firebase/auth';
 
 const SetAdminForm = () => {
   const [email, setEmail] = useState('');
