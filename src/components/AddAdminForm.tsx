@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { getAuth } from 'firebase/auth';
 
 const SetAdminForm = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (!email) {
@@ -18,7 +17,7 @@ const SetAdminForm = () => {
     setMessage('');
 
     try {
-      const response = await fetch('https://addadminclaims-tkfravxdja-uc.a.run.app', {
+      const response = await fetch('https://scriptjar-backend-production.up.railway.app/set-admin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,7 +30,7 @@ const SetAdminForm = () => {
       if (response.ok) {
         setMessage(data.message || 'Successfully set admin privileges.');
       } else {
-        setMessage(data.message || 'Failed to set admin privileges.');
+        setMessage(data.error || 'Failed to set admin privileges.');
       }
     } catch (error) {
       console.error('Error:', error);
