@@ -35,7 +35,7 @@ const AdminForm = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-      setMessage('An error occurred while setting admin privileges.');
+      alert('An error occurred while setting admin privileges.');
     } finally {
       setLoading(false);
     }
@@ -70,7 +70,6 @@ const AdminForm = () => {
         Create Admin
       </Button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 };

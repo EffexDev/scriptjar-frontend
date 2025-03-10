@@ -35,7 +35,7 @@ const RemoveAdminForm = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-      setMessage('An error occurred while removing admin privileges.');
+      alert('An error occurred while removing admin privileges.');
     } finally {
       setLoading(false);
     }
@@ -71,28 +71,8 @@ const RemoveAdminForm = () => {
             Remove Admin
         </Button>
       </form>
-
-      {message && <p>{message}</p>}
     </div>
   );
 };
-
-// form onSubmit={handleSubmit}>
-//                 {/* Department Dropdown */}
-//                 <div className="w-[100%] mb-4">
-//                     <label htmlFor="department" className="block text-black mb-2">Department</label>
-//                     <select
-//                         id="department"
-//                         value={department}
-//                         onChange={(e) => setDepartment(e.target.value)}
-//                         className="w-full p-2 bg-transparent border border-black text-black rounded-md focus:outline-none focus:border-black"
-//                     >
-//                         <option value="" className="text-black">None</option>
-//                         <option value="10" className="text-black">Ten</option>
-//                         <option value="20" className="text-black">Twenty</option>
-//                         <option value="30" className="text-black">Thirty</option>
-//                     </select>
-//                 </div>
-
 
 export default RemoveAdminForm;
