@@ -12,7 +12,7 @@ function Home() {
         maxOpacity={0.5}
         flickerChance={0.1}
 />
-        <div className="flex flex-col justify-center h-screen">
+        <div className="flex flex-col justify-center h-screen text-white">
             <LoginPanel />
         </div>
         <Footer />

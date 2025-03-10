@@ -9,7 +9,7 @@ function SignUpFormContent() {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [match, setMatch] = useState(true);
 
-  const handleConfirmChange = (e) => {
+  const handleConfirmChange = (e: any) => {
     const confirmPassword = e.target.value;
     setPasswordCheck(confirmPassword);
 
@@ -20,7 +20,7 @@ function SignUpFormContent() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (username === "" || password === "" || passwordCheck === "" || !match) {
@@ -32,7 +32,7 @@ function SignUpFormContent() {
       await createUserWithEmailAndPassword(auth, username, password);
       alert("Sign up success");
     } catch (error) {
-      setErrorMessage(error.message); 
+      setErrorMessage(e.message); 
     }
   };
 
@@ -95,3 +95,7 @@ function SignUpFormContent() {
 }
 
 export default SignUpFormContent;
+function setErrorMessage(message: any) {
+  throw new Error("Function not implemented.");
+}
+
